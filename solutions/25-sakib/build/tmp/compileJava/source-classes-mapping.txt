@@ -1,3 +1,4 @@
 com/sakib/tictactoe/TicTacToeApp.java
  com.sakib.tictactoe.TicTacToeApp
+ com.sakib.tictactoe.TicTacToeApp$Combo
  com.sakib.tictactoe.TicTacToeApp$Tile
