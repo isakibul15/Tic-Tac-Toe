@@ -23,6 +23,7 @@ import java.util.List;
 
 public class TicTacToeApp extends Application {
 
+    AI ai = new RandomAI();
     private boolean playable = true;
     private boolean turnX = true;
     private Tile[][] board = new Tile[3][3];
@@ -109,8 +110,8 @@ public class TicTacToeApp extends Application {
         }
     }
 
-    private class Tile extends StackPane{
-        private Text text = new Text();
+    class Tile extends StackPane{
+        public Text text = new Text();
 
         //Created Boxes
         public Tile(){
@@ -128,21 +129,20 @@ public class TicTacToeApp extends Application {
                 if (!playable)
                     return;
                 if (event.getButton() == MouseButton.PRIMARY){
-                    if (!turnX)
-                        return;
+                        drawX();
+                        checkState();
+                        ai.generateMove(board);
+                        checkState();
 
-                    drawX();
-                    turnX = false;
-                    checkState();
                 }
-                else if (event.getButton() == MouseButton.SECONDARY){
-                    if (turnX)
-                        return;
-
-                    draw0();
-                    turnX = true;
-                    checkState();
-                }
+//              else if (event.getButton() == MouseButton.SECONDARY){
+//                    if (turnX)
+//                        return;
+//
+//                    draw0();
+//                    turnX = true;
+//                    checkState();
+//                }
             });
         }
 
@@ -161,7 +161,7 @@ public class TicTacToeApp extends Application {
         private void drawX(){
             text.setText("X");
         }
-        private void draw0(){
+        public void draw0(){
             text.setText("0");
         }
 
