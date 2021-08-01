@@ -1,8 +1,8 @@
-com/sakib/tictactoe/AI.java
- com.sakib.tictactoe.AI
 com/sakib/tictactoe/RandomAI.java
  com.sakib.tictactoe.RandomAI
 com/sakib/tictactoe/TicTacToeApp.java
  com.sakib.tictactoe.TicTacToeApp
  com.sakib.tictactoe.TicTacToeApp$Combo
  com.sakib.tictactoe.TicTacToeApp$Tile
+com/sakib/tictactoe/AI.java
+ com.sakib.tictactoe.AI

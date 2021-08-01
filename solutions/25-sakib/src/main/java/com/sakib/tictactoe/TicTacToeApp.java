@@ -31,13 +31,13 @@ public class TicTacToeApp extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        primaryStage.setScene(new Scene(createContent()));
+        primaryStage.setScene(new Scene(generateGameBoxes()));
         primaryStage.show();
     }
 
-    private Pane root = new Pane();
+    public Pane root = new Pane();
 
-    private Parent createContent() {
+    public Parent generateGameBoxes() {
         //Identified the Whole box
         root.setPrefSize(600, 600);
         //Sepertating the boxes #9
@@ -73,13 +73,13 @@ public class TicTacToeApp extends Application {
         for (Combo combo : combos) {
             if (combo.isComplete()) {
                 playable = false ;
-                playWinAnimation(combo);
+                createWinningAnimation(combo);
                 break;
             }
         }
     }
 
-    private void playWinAnimation(Combo combo){
+    public void createWinningAnimation(Combo combo){
         Line line = new Line();
         line.setStartX(combo.tiles[0].getCenterX());
         line.setStartY(combo.tiles[0].getCenterY());
@@ -129,11 +129,10 @@ public class TicTacToeApp extends Application {
                 if (!playable)
                     return;
                 if (event.getButton() == MouseButton.PRIMARY){
-                        drawX();
-                        checkState();
-                        ai.generateMove(board);
-                        checkState();
-
+                    createSymbolXOnTicTacToeGameBoard();
+                    checkState();
+                    ai.generateMove(board);
+                    checkState();
                 }
 //              else if (event.getButton() == MouseButton.SECONDARY){
 //                    if (turnX)
@@ -158,10 +157,10 @@ public class TicTacToeApp extends Application {
             return text.getText();
         }
         //Initializing the "X" & "0" as text
-        private void drawX(){
+        private void createSymbolXOnTicTacToeGameBoard(){
             text.setText("X");
         }
-        public void draw0(){
+        public void createSymbolOOnTicTacToeGameBoard(){
             text.setText("0");
         }
 
