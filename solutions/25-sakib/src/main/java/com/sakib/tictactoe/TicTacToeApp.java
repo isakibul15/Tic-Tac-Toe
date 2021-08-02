@@ -39,7 +39,7 @@ public class TicTacToeApp extends Application {
 
     public Parent generateGameBoxes() {
         //Identified the Whole box
-        root.setPrefSize(600, 600);
+        root.setPrefSize(900, 600);
         //Sepertating the boxes #9
         for (int i = 0 ; i < 3 ; i++){
             for (int j = 0 ; j < 3 ; j++){
