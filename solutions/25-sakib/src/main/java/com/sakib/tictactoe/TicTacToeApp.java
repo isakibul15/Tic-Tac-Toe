@@ -69,7 +69,7 @@ public class TicTacToeApp extends Application {
         return root;
     }
 
-    private void checkState(){
+    private void checkBoardStatus(){
         for (Combo combo : combos) {
             if (combo.isComplete()) {
                 playable = false ;
@@ -130,9 +130,9 @@ public class TicTacToeApp extends Application {
                     return;
                 if (event.getButton() == MouseButton.PRIMARY){
                     createSymbolXOnTicTacToeGameBoard();
-                    checkState();
-                    ai.generateMove(board);
-                    checkState();
+                    checkBoardStatus();
+                    ai.generateNextMove(board);
+                    checkBoardStatus();
                 }
 //              else if (event.getButton() == MouseButton.SECONDARY){
 //                    if (turnX)
@@ -142,7 +142,8 @@ public class TicTacToeApp extends Application {
 //                    turnX = true;
 //                    checkState();
 //                }
-            });
+                }
+            );
         }
 
         public double getCenterX(){
@@ -156,6 +157,7 @@ public class TicTacToeApp extends Application {
         public String getValue(){
             return text.getText();
         }
+
         //Initializing the "X" & "0" as text
         private void createSymbolXOnTicTacToeGameBoard(){
             text.setText("X");
