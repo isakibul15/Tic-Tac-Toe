@@ -6,7 +6,7 @@ import javafx.animation.Timeline;
 import javafx.scene.shape.Line;
 import javafx.util.Duration;
 
-public class Animation {
+public class ShowCombinationResult {
     public static void createWinningAnimation(Combo combo){
         Line line = new Line();
         line.setStartX(combo.tiles[0].getCenterX());

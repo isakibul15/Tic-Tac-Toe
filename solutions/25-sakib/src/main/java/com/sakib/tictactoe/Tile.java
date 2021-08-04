@@ -59,6 +59,5 @@ class Tile extends StackPane {
     public void createSymbolOOnTicTacToeGameBoard(){
         text.setText("0");
     }
-
 }
 

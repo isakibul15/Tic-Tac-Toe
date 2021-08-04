@@ -21,7 +21,7 @@ public class Combo {
         for (Combo combo : combos) {
             if (combo.isComplete()) {
                 GameManager.playable = false ;
-                Animation.createWinningAnimation(combo);
+                ShowCombinationResult.createWinningAnimation(combo);
                 break;
             }
         }
