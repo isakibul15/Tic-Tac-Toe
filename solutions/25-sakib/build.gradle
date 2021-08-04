@@ -20,7 +20,7 @@ dependencies {
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.0'
 }
 
-mainClassName = 'com.sakib.tictactoe.TicTacToeApp'
+mainClassName = 'com.sakib.tictactoe.Main'
 
 test {
     useJUnitPlatform()
