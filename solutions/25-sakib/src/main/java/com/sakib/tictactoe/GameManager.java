@@ -9,4 +9,5 @@ public class GameManager {
     public static Tile[][] board = new Tile[3][3];
     public static ArrayList<Combo> combos = new ArrayList<>();
     public static GameBoard gameBoard = new GameBoard();
+    public static boolean is_player_won = false;
 }

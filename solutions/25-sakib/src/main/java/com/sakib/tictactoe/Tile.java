@@ -17,21 +17,27 @@ class Tile extends StackPane {
         border.setFill(null);
         border.setStroke(Color.BLACK);
 
-        text.setFont(Font.font(70));
+        text.setFont(Font.font(130));
 
         setAlignment(Pos.CENTER);
         getChildren().addAll(border, text); // added text as list of children
 
         //Click Action as "X" & "0" as its object oriented
         setOnMouseClicked(event -> {
-                    if (!GameManager.playable)
-                        return;
-                    if (event.getButton() == MouseButton.PRIMARY) {
-                        createSymbolXOnTicTacToeGameBoard();
-                        Combo.checkBoardStatus(GameManager.combos);
-                        GameManager.ai.generateNextMove(GameManager.board);
-                        Combo.checkBoardStatus(GameManager.combos);// Checking if game is over or not
-                    }
+            if (!GameManager.playable)
+                return;
+            if (event.getButton() == MouseButton.PRIMARY) {
+                createSymbolXOnTicTacToeGameBoard();
+                Combo.checkBoardStatus(GameManager.combos);
+
+                if(!GameManager.playable) {
+                    GameManager.is_player_won = true;
+                    return;
+                }
+                GameManager.ai.generateNextMove(GameManager.board);
+                Combo.checkBoardStatus(GameManager.combos);// Checking if game is over or not
+
+            }
                     //              else if (event.getButton() == MouseButton.SECONDARY){
                     //                    if (turnX)
                     //                        return;
