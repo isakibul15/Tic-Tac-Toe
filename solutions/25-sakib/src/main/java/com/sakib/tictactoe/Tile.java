@@ -20,8 +20,8 @@ class Tile extends StackPane {
 
         text.setFont(Font.font(130));
         text.setFill(GameManager.theme == GameManager.Themes.CLASSIC ? Color.BLACK :
-                GameManager.theme == GameManager.Themes.FORREST ? Color.YELLOW :
-                        Color.WHITE);
+                GameManager.theme == GameManager.Themes.FORREST ? Color.GREEN :
+                        Color.BLACK);
 
         setAlignment(Pos.CENTER);
         getChildren().addAll(border, text); // added text as list of children

@@ -17,8 +17,8 @@ public class ShowCombinationResult {
         line.setStrokeWidth(6);
 
         line.setStroke(GameManager.theme == GameManager.Themes.CLASSIC ? Color.BLACK :
-                GameManager.theme == GameManager.Themes.FORREST ? Color.YELLOW :
-                        Color.WHITE);
+                GameManager.theme == GameManager.Themes.FORREST ? Color.GREEN :
+                        Color.GREY);
         GameManager.gameBoard.getChildren().add(line);
 
 
