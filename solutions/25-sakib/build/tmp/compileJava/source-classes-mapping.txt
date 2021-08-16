@@ -1,6 +1,5 @@
-com/sakib/tictactoe/GameManager.java
- com.sakib.tictactoe.GameManager
- com.sakib.tictactoe.GameManager$Themes
+com/sakib/tictactoe/Tile.java
+ com.sakib.tictactoe.Tile
 com/sakib/tictactoe/RandomAI.java
  com.sakib.tictactoe.RandomAI
 com/sakib/tictactoe/AI.java
@@ -13,5 +12,6 @@ com/sakib/tictactoe/ShowCombinationResult.java
  com.sakib.tictactoe.ShowCombinationResult
 com/sakib/tictactoe/GameBoard.java
  com.sakib.tictactoe.GameBoard
-com/sakib/tictactoe/Tile.java
- com.sakib.tictactoe.Tile
+com/sakib/tictactoe/GameManager.java
+ com.sakib.tictactoe.GameManager
+ com.sakib.tictactoe.GameManager$Themes

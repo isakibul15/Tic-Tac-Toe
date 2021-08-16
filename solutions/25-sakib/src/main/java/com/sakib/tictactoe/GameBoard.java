@@ -76,11 +76,11 @@ public class GameBoard extends Pane {
         box.setPrefSize(300, 600);
         box.setPadding(new Insets(20));
         box.getChildren().add(getLabel("Theme", Font.font("Aril", FontWeight.EXTRA_BOLD, 40),Color.BLACK));
-        RadioButton classic_rb = getRadioButton("CLASSIC", Font.font("Arial", FontPosture.REGULAR, 25),
+        RadioButton classic_rb = getRadioButton("CLASSIC", Font.font("Arial", FontPosture.REGULAR, 22),
                 GameManager.theme == GameManager.Themes.CLASSIC);
-        RadioButton forrest_rb = getRadioButton("Forrest", Font.font("Arial", FontPosture.REGULAR, 25),
+        RadioButton forrest_rb = getRadioButton("FOREST", Font.font("Arial", FontPosture.REGULAR, 22),
                 GameManager.theme == GameManager.Themes.FORREST);
-        RadioButton highContrast_rb = getRadioButton("High Contrast", Font.font("Arial", FontPosture.REGULAR, 25),
+        RadioButton highContrast_rb = getRadioButton("HIGH CONTRAST", Font.font("Arial", FontPosture.REGULAR, 22),
                 GameManager.theme == GameManager.Themes.HIGH_CONTRAST);
 
         box.getChildren().addAll(classic_rb, forrest_rb, highContrast_rb);
@@ -150,10 +150,10 @@ public class GameBoard extends Pane {
                         case "CLASSIC":
                             GameManager.theme = GameManager.Themes.CLASSIC;
                             break;
-                        case "Forrest":
+                        case "FOREST":
                             GameManager.theme = GameManager.Themes.FORREST;
                             break;
-                        case "High Contrast":
+                        case "HIGH CONTRAST":
                             GameManager.theme = GameManager.Themes.HIGH_CONTRAST;
                             break;
                     }
