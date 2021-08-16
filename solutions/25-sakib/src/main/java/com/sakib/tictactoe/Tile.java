@@ -35,7 +35,7 @@ class Tile extends StackPane {
                         Combo.checkBoardStatus(GameManager.combos);
 
                         if(!GameManager.playable) {
-                            GameManager.is_player_won = true;
+                            GameManager.Check_player_win = true;
                             return;
                         }
                         GameManager.ai.generateNextMove(GameManager.board);

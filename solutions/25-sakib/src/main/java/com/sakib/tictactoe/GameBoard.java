@@ -75,20 +75,20 @@ public class GameBoard extends Pane {
         box.setLayoutY(0);
         box.setPrefSize(300, 600);
         box.setPadding(new Insets(20));
-        box.getChildren().add(getLabel("Theme", Font.font("Aril", FontWeight.EXTRA_BOLD, 30),Color.BLACK));
-        RadioButton classic_rb = getRadioButton("Classic", Font.font("Arial", FontPosture.REGULAR, 26),
+        box.getChildren().add(getLabel("Theme", Font.font("Aril", FontWeight.EXTRA_BOLD, 40),Color.BLACK));
+        RadioButton classic_rb = getRadioButton("CLASSIC", Font.font("Arial", FontPosture.REGULAR, 25),
                 GameManager.theme == GameManager.Themes.CLASSIC);
-        RadioButton forrest_rb = getRadioButton("Forrest", Font.font("Arial", FontPosture.REGULAR, 26),
+        RadioButton forrest_rb = getRadioButton("Forrest", Font.font("Arial", FontPosture.REGULAR, 25),
                 GameManager.theme == GameManager.Themes.FORREST);
-        RadioButton highContrast_rb = getRadioButton("High Contrast", Font.font("Arial", FontPosture.REGULAR, 26),
+        RadioButton highContrast_rb = getRadioButton("High Contrast", Font.font("Arial", FontPosture.REGULAR, 25),
                 GameManager.theme == GameManager.Themes.HIGH_CONTRAST);
 
         box.getChildren().addAll(classic_rb, forrest_rb, highContrast_rb);
         group_radioButtons(classic_rb, forrest_rb, highContrast_rb);
 
-        VBox bottom_btns = new VBox();
-        bottom_btns.setSpacing(20);
-        bottom_btns.setAlignment(Pos.BOTTOM_LEFT);
+        VBox bottom_buttons = new VBox();
+        bottom_buttons.setSpacing(20);
+        bottom_buttons.setAlignment(Pos.BOTTOM_LEFT);
 
         String style =
                 "-fx-background-color: black;"+
@@ -96,14 +96,14 @@ public class GameBoard extends Pane {
                 "-fx-border-radius: 10;"+
                 "-fx-background-radius: 10;"
                 ;
-        bottom_btns.getChildren().add(get_button("Start With Random AI", Font.font("Arial", FontPosture.REGULAR, 20), e->{
+        bottom_buttons.getChildren().add(get_button("Start With Random AI", Font.font("Arial", FontPosture.REGULAR, 20), e->{
             // Here you can do stuff of Random AI
         }, style));
-        bottom_btns.getChildren().add(get_button("Start With Defensive AI", Font.font("Arial", FontPosture.REGULAR, 20), e->{
+        bottom_buttons.getChildren().add(get_button("Start With Defensive AI", Font.font("Arial", FontPosture.REGULAR, 20), e->{
             // Here you can do stuff of defensive AI.
         }, style));
-        box.getChildren().add(bottom_btns);
-        bottom_btns.setPrefHeight(400);
+        box.getChildren().add(bottom_buttons);
+        bottom_buttons.setPrefHeight(400);
 
         this.getChildren().add(box);
     }
@@ -147,7 +147,7 @@ public class GameBoard extends Pane {
             btn.selectedProperty().addListener((observable , oldValue, newValue ) ->{
                 if(newValue){
                     switch(btn.getText()){
-                        case "Classic":
+                        case "CLASSIC":
                             GameManager.theme = GameManager.Themes.CLASSIC;
                             break;
                         case "Forrest":
