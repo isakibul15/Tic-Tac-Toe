@@ -1,15 +1,19 @@
 package com.sakib.tictactoe;
 
-public class RandomAI extends AI{
+import java.util.Random;
+
+public class RandomAI extends AI {
     @Override
     public void generateNextMove(Tile[][] board) {
-        for (int i = 0 ; i < 3 ; i++){
-            for (int j = 0 ; j <3 ; j++){
-                if (board[i][j].text.getText() == ""){
-                    board[i][j].createSymbolOOnTicTacToeGameBoard();
-                    return;
-                }
-            }
-        }
+        int i;
+        int j;
+        var random = new Random();
+        do {
+            i = random.nextInt(3);
+            j = random.nextInt(3);
+//            System.out.println(board[i][j].text.getText());
+            // 0-2 blank space random number generate
+        } while (!board[i][j].text.getText().equals(""));
+        board[i][j].createSymbolOOnTicTacToeGameBoard();
     }
 }
