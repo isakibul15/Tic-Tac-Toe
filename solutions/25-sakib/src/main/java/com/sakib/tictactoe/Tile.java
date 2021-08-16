@@ -15,8 +15,8 @@ class Tile extends StackPane {
     public Tile() {
         Rectangle border = new Rectangle(200, 200);
         border.setFill(GameManager.theme == GameManager.Themes.CLASSIC ? Color.WHITE :
-                GameManager.theme == GameManager.Themes.FORREST ? Color.GREEN :
-                        Color.BLACK);
+                GameManager.theme == GameManager.Themes.FORREST ? Color.LIGHTGREEN :
+                        Color.DARKGRAY);
 
         text.setFont(Font.font(130));
         text.setFill(GameManager.theme == GameManager.Themes.CLASSIC ? Color.BLACK :

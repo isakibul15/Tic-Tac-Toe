@@ -41,18 +41,18 @@ public class GameBoard extends Pane {
 
         this.getChildren().add(getLine(200, 15, 200, 600-15,
                 GameManager.theme == GameManager.Themes.CLASSIC ? Color.BLACK :
-                        GameManager.theme == GameManager.Themes.FORREST ? Color.YELLOW :
-                                Color.WHITE));
+                        GameManager.theme == GameManager.Themes.FORREST ? Color.DARKGREEN :
+                                Color.LIGHTGRAY));
 
         this.getChildren().add(getLine(400, 15, 400, 600-15, GameManager.theme == GameManager.Themes.CLASSIC ? Color.BLACK :
-                GameManager.theme == GameManager.Themes.FORREST ? Color.YELLOW :
-                        Color.WHITE));
+                GameManager.theme == GameManager.Themes.FORREST ? Color.DARKGREEN :
+                        Color.LIGHTGRAY));
         this.getChildren().add(getLine(15, 200, 600-15, 200, GameManager.theme == GameManager.Themes.CLASSIC ? Color.BLACK :
-                GameManager.theme == GameManager.Themes.FORREST ? Color.YELLOW :
-                        Color.WHITE));
+                GameManager.theme == GameManager.Themes.FORREST ? Color.DARKGREEN :
+                        Color.LIGHTGRAY));
         this.getChildren().add(getLine(15, 400, 600-15, 400, GameManager.theme == GameManager.Themes.CLASSIC ? Color.BLACK :
-                GameManager.theme == GameManager.Themes.FORREST ? Color.YELLOW :
-                        Color.WHITE));
+                GameManager.theme == GameManager.Themes.FORREST ? Color.DARKGREEN :
+                        Color.LIGHTGRAY));
 
         side_view();
 
@@ -75,7 +75,7 @@ public class GameBoard extends Pane {
         box.setLayoutY(0);
         box.setPrefSize(300, 600);
         box.setPadding(new Insets(20));
-        box.getChildren().add(getLabel("Theme", Font.font("Aril", FontWeight.EXTRA_BOLD, 40),Color.BLACK));
+        box.getChildren().add(getLabel("THEME", Font.font("Aril", FontWeight.EXTRA_BOLD, 40),Color.BLACK));
         RadioButton classic_rb = getRadioButton("CLASSIC", Font.font("Arial", FontPosture.REGULAR, 22),
                 GameManager.theme == GameManager.Themes.CLASSIC);
         RadioButton forrest_rb = getRadioButton("FOREST", Font.font("Arial", FontPosture.REGULAR, 22),
@@ -94,8 +94,7 @@ public class GameBoard extends Pane {
                 "-fx-background-color: black;"+
                 "-fx-text-fill: white;"+
                 "-fx-border-radius: 10;"+
-                "-fx-background-radius: 10;"
-                ;
+                "-fx-background-radius: 10;";
         bottom_buttons.getChildren().add(get_button("Start With Random AI", Font.font("Arial", FontPosture.REGULAR, 20), e->{
             // Here you can do stuff of Random AI
         }, style));
