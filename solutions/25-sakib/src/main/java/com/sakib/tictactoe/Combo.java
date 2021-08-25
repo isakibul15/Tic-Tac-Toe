@@ -43,7 +43,7 @@ public class Combo {
         for (Combo combo : combos) {
             if (combo.isComplete()) {
                 GameManager.playable = false;
-                ShowCombinationResult.createWinningAnimation(combo);
+                ShowAnimationLine.createWinningAnimation(combo);
                 break;
             }
         }
