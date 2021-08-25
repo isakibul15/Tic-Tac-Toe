@@ -2,6 +2,7 @@ package com.sakib.tictactoe;
 
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Dialog;
+
 import java.util.ArrayList;
 
 public class Combo {
@@ -14,22 +15,38 @@ public class Combo {
     public boolean isComplete() {
         if (tiles[0].getValue().isEmpty())
             return false;
+
         return tiles[0].getValue().equals(tiles[1].getValue())
                 && tiles[0].getValue().equals(tiles[2].getValue());
     }
-    public boolean isDraw(){
-        boolean cond = true;
-        for (Tile tile : tiles) {
-            if(tile.text.getText().isEmpty()) cond = false;
+
+    public static boolean isDraw(){
+        for(int i = 0; i< 3; i++){
+            for(int j = 0; j<3; j++){
+                if(GameManager.board[i][j].text.getText().isEmpty()) return false;
+            }
         }
-        return cond;
+        return true;
     }
+
+    public static int checkWinner(){
+        for (Combo combo : GameManager.combos) {
+            if(combo.isComplete()){
+                if(GameManager.lastMove.text.getText().equals("X")) return 1;
+                else return -1;
+            }
+        }
+        if(isDraw()){
+            return 0;
+        }
+        return 5;
+    }
+
     public static void checkBoardStatus(ArrayList<Combo> combos){
         for (Combo combo : combos) {
             if (combo.isComplete()) {
                 GameManager.playable = false;
                 ShowCombinationResult.createWinningAnimation(combo);
-                Dialog<ButtonType> winner_msg = new Dialog<>();
                 break;
             }
         }
