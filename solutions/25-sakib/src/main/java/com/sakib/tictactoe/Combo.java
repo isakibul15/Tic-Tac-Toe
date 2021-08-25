@@ -9,7 +9,7 @@ public class Combo {
         this.tiles = tiles;
     }
 
-    public boolean isComplete() {
+    public boolean isFinish() {
         if (tiles[0].getValue().isEmpty())
             return false;
 
@@ -28,7 +28,7 @@ public class Combo {
 
     public static int checkWinner(){
         for (Combo combo : GameManager.combos) {
-            if(combo.isComplete()){
+            if(combo.isFinish()){
                 if(GameManager.lastMove.text.getText().equals("X")) return 1;
                 else return -1;
             }
@@ -41,7 +41,7 @@ public class Combo {
 
     public static void checkBoardStatus(ArrayList<Combo> combos){
         for (Combo combo : combos) {
-            if (combo.isComplete()) {
+            if (combo.isFinish()) {
                 GameManager.playable = false;
                 ShowAnimationLine.createWinningAnimation(combo);
                 break;

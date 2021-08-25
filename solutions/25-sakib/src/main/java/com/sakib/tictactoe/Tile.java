@@ -37,25 +37,16 @@ class Tile extends StackPane {
                         createSymbolXOnTicTacToeGameBoard();
                         Combo.checkBoardStatus(GameManager.combos);
 
-                        if(!GameManager.playable) {
+                        if (!GameManager.playable) {
                             GameManager.is_player_won = true;
                             return;
                         }
-                        if(GameManager.isDefensiveAI)
+                        if (GameManager.isDefensiveAI)
                             GameManager.defensiveAI.generateNextMove(GameManager.board);
                         else
                             GameManager.ai.generateNextMove(GameManager.board);
                         Combo.checkBoardStatus(GameManager.combos);// Checking if game is over or not
-
                     }
-                    //              else if (event.getButton() == MouseButton.SECONDARY){
-                    //                    if (turnX)
-                    //                        return;
-                    //
-                    //                    draw0();
-                    //                    turnX = true;
-                    //                    checkState();
-                    //                }
                 }
         );
     }

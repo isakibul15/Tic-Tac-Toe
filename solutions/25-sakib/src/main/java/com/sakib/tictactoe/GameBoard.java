@@ -323,7 +323,7 @@ public class GameBoard extends Pane {
                         case "Classic":
                             GameManager.theme = GameManager.Themes.CLASSIC;
                             break;
-                        case "Forrest":
+                        case "Forest":
                             GameManager.theme = GameManager.Themes.FOREST;
                             break;
                         case "High Contrast":
