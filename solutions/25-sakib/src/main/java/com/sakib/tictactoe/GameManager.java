@@ -6,7 +6,7 @@ public class GameManager {
 
     public enum Themes{
         CLASSIC,
-        FORREST,
+        FOREST,
         HIGH_CONTRAST
     }
 

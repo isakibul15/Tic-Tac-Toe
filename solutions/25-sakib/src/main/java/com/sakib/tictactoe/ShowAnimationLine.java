@@ -17,7 +17,7 @@ public class ShowAnimationLine {
         line.setStrokeWidth(6);
 
         line.setStroke(GameManager.theme == GameManager.Themes.CLASSIC ? Color.BLACK :
-                GameManager.theme == GameManager.Themes.FORREST ? Color.GREY :
+                GameManager.theme == GameManager.Themes.FOREST ? Color.GREY :
                         Color.GREY);
         GameManager.gameBoard.getChildren().add(line);
 

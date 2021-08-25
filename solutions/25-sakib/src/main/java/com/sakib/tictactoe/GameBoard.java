@@ -213,17 +213,17 @@ public class GameBoard extends Pane {
 
         this.getChildren().add(getLine(200, 15, 200, 600-15,
                 GameManager.theme == GameManager.Themes.CLASSIC ? Color.BLACK :
-                        GameManager.theme == GameManager.Themes.FORREST ? Color.DARKGREEN :
+                        GameManager.theme == GameManager.Themes.FOREST ? Color.DARKGREEN :
                                 Color.LIGHTGRAY));
 
         this.getChildren().add(getLine(400, 15, 400, 600-15, GameManager.theme == GameManager.Themes.CLASSIC ? Color.BLACK :
-                GameManager.theme == GameManager.Themes.FORREST ? Color.DARKGREEN :
+                GameManager.theme == GameManager.Themes.FOREST ? Color.DARKGREEN :
                         Color.LIGHTGRAY));
         this.getChildren().add(getLine(15, 200, 600-15, 200, GameManager.theme == GameManager.Themes.CLASSIC ? Color.BLACK :
-                GameManager.theme == GameManager.Themes.FORREST ? Color.DARKGREEN :
+                GameManager.theme == GameManager.Themes.FOREST ? Color.DARKGREEN :
                         Color.LIGHTGRAY));
         this.getChildren().add(getLine(15, 400, 600-15, 400, GameManager.theme == GameManager.Themes.CLASSIC ? Color.BLACK :
-                GameManager.theme == GameManager.Themes.FORREST ? Color.DARKGREEN :
+                GameManager.theme == GameManager.Themes.FOREST ? Color.DARKGREEN :
                         Color.LIGHTGRAY));
 
         side_view();
@@ -250,8 +250,8 @@ public class GameBoard extends Pane {
         box.getChildren().add(getLabel("Theme", Font.font("Aril", FontWeight.EXTRA_BOLD, 30),Color.BLACK));
         RadioButton classic_rb = getRadioButton("Classic", Font.font("Arial", FontPosture.REGULAR, 26),
                 GameManager.theme == GameManager.Themes.CLASSIC);
-        RadioButton forrest_rb = getRadioButton("Forrest", Font.font("Arial", FontPosture.REGULAR, 26),
-                GameManager.theme == GameManager.Themes.FORREST);
+        RadioButton forrest_rb = getRadioButton("Forest", Font.font("Arial", FontPosture.REGULAR, 26),
+                GameManager.theme == GameManager.Themes.FOREST);
         RadioButton highContrast_rb = getRadioButton("High Contrast", Font.font("Arial", FontPosture.REGULAR, 26),
                 GameManager.theme == GameManager.Themes.HIGH_CONTRAST);
 
@@ -324,7 +324,7 @@ public class GameBoard extends Pane {
                             GameManager.theme = GameManager.Themes.CLASSIC;
                             break;
                         case "Forrest":
-                            GameManager.theme = GameManager.Themes.FORREST;
+                            GameManager.theme = GameManager.Themes.FOREST;
                             break;
                         case "High Contrast":
                             GameManager.theme = GameManager.Themes.HIGH_CONTRAST;

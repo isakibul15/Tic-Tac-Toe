@@ -18,7 +18,7 @@ class Tile extends StackPane {
     public Tile() {
         Rectangle border = new Rectangle(200, 200);
         border.setFill(GameManager.theme == GameManager.Themes.CLASSIC ? Color.WHITE :
-                GameManager.theme == GameManager.Themes.FORREST ? Color.LIGHTGREEN :
+                GameManager.theme == GameManager.Themes.FOREST ? Color.LIGHTGREEN :
                         Color.web("#414345"));
 
         text.setFont(Font.font(130));
@@ -77,7 +77,7 @@ class Tile extends StackPane {
                 imageView.setOpacity(0);
                 imageView.setDisable(true);
                 break;
-            case FORREST:
+            case FOREST:
                 text.setOpacity(0);
                 text.setText("X");
                 imageView.setOpacity(1);
@@ -101,7 +101,7 @@ class Tile extends StackPane {
                 imageView.setOpacity(0);
                 imageView.setDisable(true);
                 break;
-            case FORREST:
+            case FOREST:
                 text.setOpacity(0);
                 text.setText("O");
                 imageView.setOpacity(1);
