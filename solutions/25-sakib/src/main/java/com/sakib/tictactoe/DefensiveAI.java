@@ -4,27 +4,26 @@ public class DefensiveAI extends AI{
 
     @Override
     public void generateNextMove(Tile[][] board) {
-        int bestScore = 1;
-        Tile bestMove = null;
-        for(int i = 0; i< 3; i++){
-            for(int j = 0; j< 3; j++){
+        int excelentScore = 1;
+        Tile excelentMove = null;
+        for(int i = 0; i< 3; i++) {
+            for (int j = 0; j < 3; j++) {
                 // Is the spot available?
-                if(board[i][j].text.getText().isEmpty()){
+                if (board[i][j].text.getText().isEmpty()) {
                     board[i][j].text.setText("O");
                     GameManager.lastMove = board[i][j];
-                    int score = minimax(board, 0,false);
+                    int score = minimax(board, 0, false);
                     board[i][j].text.setText("");
-                    if(score < bestScore){
-                        bestScore = score;
-                        bestMove = board[i][j];
+                    if (score < excelentScore) {
+                        excelentScore = score;
+                        excelentMove = board[i][j];
                     }
-                    System.out.printf("Board[%d][%d] and score == %d\n", i, j, bestScore);
+//                    System.out.printf("Board[%d][%d] and score == %d\n", i, j, bestScore);
                 }
             }
         }
-        System.out.println("--------------------------------------------------------------");
-        if(bestMove != null)
-            bestMove.createSymbolOOnTicTacToeGameBoard();
+        if(excelentMove != null)
+            excelentMove.createSymbolOOnTicTacToeGameBoard();
     }
 
     private int minimax(Tile[][] board, int depth, boolean isMaximizing) {
@@ -35,9 +34,9 @@ public class DefensiveAI extends AI{
             return result;
         }
 
-        int bestScore;
+        int excelentScore;
         if(isMaximizing){
-            bestScore = 1;
+            excelentScore = 1;
             for(int i = 0; i< 3; i++){
                 for(int j = 0; j< 3; j++){
                     // Is the spot available?
@@ -46,12 +45,12 @@ public class DefensiveAI extends AI{
                         GameManager.lastMove = board[i][j];
                         int score = minimax(board, depth+1,false);
                         board[i][j].text.setText("");
-                        bestScore = Math.min(score, bestScore);
+                        excelentScore = Math.min(score, excelentScore);
                     }
                 }
             }
         }else{
-            bestScore = -1;
+            excelentScore = -1;
             for(int i = 0; i< 3; i++){
                 for(int j = 0; j< 3; j++){
                     // Is the spot available?
@@ -60,11 +59,11 @@ public class DefensiveAI extends AI{
                         GameManager.lastMove = board[i][j];
                         int score = minimax(board, depth+1,true);
                         board[i][j].text.setText("");
-                        bestScore = Math.max(score, bestScore);
+                        excelentScore = Math.max(score, excelentScore);
                     }
                 }
             }
         }
-        return bestScore;
+        return excelentScore;
     }
 }

@@ -1,8 +1,5 @@
 package com.sakib.tictactoe;
 
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.Dialog;
-
 import java.util.ArrayList;
 
 public class Combo {
