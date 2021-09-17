@@ -17,13 +17,18 @@ import javafx.scene.text.FontWeight;
 
 public class GameBoard extends Pane {
 
+
+    Line line1, line2, line3, line4;
+
+    Tile[][] board;
+
     public GameBoard() {
         board_setup();
     }
 
     private void board_setup() {
         this.getChildren().clear();
-        var board = GameManager.board;
+        board = GameManager.board;
         var combos = GameManager.combos;
 
         //Identified the Whole box
@@ -39,21 +44,22 @@ public class GameBoard extends Pane {
             }
         }
 
-        this.getChildren().add(getLine(200, 15, 200, 600-15,
+        line1 = getLine(200, 15, 200, 600-15,
                 GameManager.theme == GameManager.Themes.CLASSIC ? Color.BLACK :
                         GameManager.theme == GameManager.Themes.FOREST ? Color.DARKGREEN :
-                                Color.LIGHTGRAY));
+                                Color.LIGHTGRAY);
 
-        this.getChildren().add(getLine(400, 15, 400, 600-15, GameManager.theme == GameManager.Themes.CLASSIC ? Color.BLACK :
+        line2 = getLine(400, 15, 400, 600-15, GameManager.theme == GameManager.Themes.CLASSIC ? Color.BLACK :
                 GameManager.theme == GameManager.Themes.FOREST ? Color.DARKGREEN :
-                        Color.LIGHTGRAY));
-        this.getChildren().add(getLine(15, 200, 600-15, 200, GameManager.theme == GameManager.Themes.CLASSIC ? Color.BLACK :
+                        Color.LIGHTGRAY);
+        line3 = getLine(15, 200, 600-15, 200, GameManager.theme == GameManager.Themes.CLASSIC ? Color.BLACK :
                 GameManager.theme == GameManager.Themes.FOREST ? Color.DARKGREEN :
-                        Color.LIGHTGRAY));
-        this.getChildren().add(getLine(15, 400, 600-15, 400, GameManager.theme == GameManager.Themes.CLASSIC ? Color.BLACK :
+                        Color.LIGHTGRAY);
+        line4 = getLine(15, 400, 600-15, 400, GameManager.theme == GameManager.Themes.CLASSIC ? Color.BLACK :
                 GameManager.theme == GameManager.Themes.FOREST ? Color.DARKGREEN :
-                        Color.LIGHTGRAY));
+                        Color.LIGHTGRAY);
 
+        this.getChildren().addAll(line1, line2, line3, line4);
         side_view();
 
         for (int y = 0 ; y < 3 ; y++){
@@ -92,9 +98,9 @@ public class GameBoard extends Pane {
 
         String style =
                 "-fx-background-color: black;"+
-                "-fx-text-fill: white;"+
-                "-fx-border-radius: 10;"+
-                "-fx-background-radius: 10;";
+                        "-fx-text-fill: white;"+
+                        "-fx-border-radius: 10;"+
+                        "-fx-background-radius: 10;";
         bottom_btns.getChildren().add(get_button("Start With Random AI", Font.font("Arial", FontPosture.REGULAR, 20), e->{
             // Here you can do stuff of Random AI
             GameManager.isDefensiveAI = false;
@@ -103,6 +109,25 @@ public class GameBoard extends Pane {
             // Here you can do stuff of defensive AI.
             GameManager.isDefensiveAI = true;
         }, style));
+
+        bottom_btns.getChildren().add(get_button("Start Game", Font.font("Arial", FontPosture.REGULAR, 20), e->{
+            GameManager.playable = true;
+            for(int i = 0; i< 3; i++){
+                for(int j = 0; j< 3; j++){
+                    board[i][j].text.setText("");
+                    board[i][j].imageView.setImage(null);
+                }
+            }
+            if(GameManager.lineDrawn) {
+                getChildren().remove(getChildren().size() - 1);
+                GameManager.lineDrawn = false;
+            }
+
+            GameManager.is_player_won = false;
+            GameManager.lastMove = null;
+
+        }
+        ,style));
         box.getChildren().add(bottom_btns);
         bottom_btns.setPrefHeight(400);
 
@@ -143,6 +168,27 @@ public class GameBoard extends Pane {
         return line;
     }
 
+    void changeTheme(){
+        line1.setStroke((GameManager.theme == GameManager.Themes.CLASSIC ? Color.BLACK :
+                GameManager.theme == GameManager.Themes.FOREST ? Color.DARKGREEN :
+                        Color.LIGHTGRAY));
+        line2.setStroke((GameManager.theme == GameManager.Themes.CLASSIC ? Color.BLACK :
+                GameManager.theme == GameManager.Themes.FOREST ? Color.DARKGREEN :
+                        Color.LIGHTGRAY));
+        line3.setStroke((GameManager.theme == GameManager.Themes.CLASSIC ? Color.BLACK :
+                GameManager.theme == GameManager.Themes.FOREST ? Color.DARKGREEN :
+                        Color.LIGHTGRAY));
+        line4.setStroke((GameManager.theme == GameManager.Themes.CLASSIC ? Color.BLACK :
+                GameManager.theme == GameManager.Themes.FOREST ? Color.DARKGREEN :
+                        Color.LIGHTGRAY));
+
+        for(int i = 0; i< 3; i++){
+            for(int j = 0; j< 3; j++){
+                board[i][j].updateTheme();
+            }
+        }
+    }
+
     void group_radioButtons(RadioButton... btns){
         for (RadioButton btn : btns) {
             btn.selectedProperty().addListener((observable , oldValue, newValue ) ->{
@@ -158,9 +204,7 @@ public class GameBoard extends Pane {
                             GameManager.theme = GameManager.Themes.HIGH_CONTRAST;
                             break;
                     }
-                    GameManager.combos.clear();
-                    GameManager.playable = true;
-                    board_setup();
+                    changeTheme();
                     for (RadioButton radioButton : btns) {
                         if(btn == radioButton) continue;
                         radioButton.setSelected(false);

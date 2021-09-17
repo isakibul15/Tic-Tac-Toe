@@ -7,7 +7,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
 import javafx.util.Duration;
 
-public class ShowAnimationLine {
+public class  ShowCombinationResult {
     public static void createWinningAnimation(Combo combo){
         Line line = new Line();
         line.setStartX(combo.tiles[0].getCenterX());
@@ -17,8 +17,8 @@ public class ShowAnimationLine {
         line.setStrokeWidth(6);
 
         line.setStroke(GameManager.theme == GameManager.Themes.CLASSIC ? Color.BLACK :
-                GameManager.theme == GameManager.Themes.FOREST ? Color.GREY :
-                        Color.GREY);
+                GameManager.theme == GameManager.Themes.FOREST ? Color.YELLOW :
+                        Color.WHITE);
         GameManager.gameBoard.getChildren().add(line);
 
 
@@ -27,6 +27,6 @@ public class ShowAnimationLine {
                 new KeyValue(line.endXProperty(),combo.tiles[2].getCenterX()),
                 new KeyValue(line.endYProperty(),combo.tiles[2].getCenterY())));
         timeline.play();
-        GameManager.lineDrawn = true;
     }
+
 }

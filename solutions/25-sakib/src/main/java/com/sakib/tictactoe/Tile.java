@@ -14,9 +14,10 @@ class Tile extends StackPane {
     public Text text = new Text();
 
     ImageView imageView = new ImageView();
+    Rectangle border;
     //Created Boxes
     public Tile() {
-        Rectangle border = new Rectangle(200, 200);
+        border = new Rectangle(200, 200);
         border.setFill(GameManager.theme == GameManager.Themes.CLASSIC ? Color.WHITE :
                 GameManager.theme == GameManager.Themes.FOREST ? Color.LIGHTGREEN :
                         Color.web("#414345"));
@@ -41,15 +42,50 @@ class Tile extends StackPane {
                             GameManager.is_player_won = true;
                             return;
                         }
-                        if (GameManager.isDefensiveAI)
-                            GameManager.defensiveAI.generateNextMove(GameManager.board);
-                        else
-                            GameManager.ai.generateNextMove(GameManager.board);
+                        if(!Combo.isDraw()) {
+                            if (GameManager.isDefensiveAI)
+                                GameManager.defensiveAI.generateNextMove(GameManager.board);
+                            else
+                                GameManager.ai.generateNextMove(GameManager.board);
+                        }else{
+                            System.out.println("GG");
+                            GameManager.playable = false;
+                        }
                         Combo.checkBoardStatus(GameManager.combos);// Checking if game is over or not
                     }
+//                    GameManager.print_status();
                 }
         );
     }
+
+    public void updateTheme(){
+        border.setFill(GameManager.theme == GameManager.Themes.CLASSIC ? Color.WHITE :
+                GameManager.theme == GameManager.Themes.FOREST ? Color.LIGHTGREEN :
+                        Color.web("#414345"));
+
+        if(GameManager.theme == GameManager.Themes.FOREST){
+            text.setOpacity(0);
+            imageView.setDisable(false);
+            imageView.setOpacity(1);
+            if(text.getText().equals("X"))
+                imageView.setImage(new Image(getClass().getResource("flower.png").toString()));
+            else if(text.getText().equals("O"))
+                imageView.setImage(new Image(getClass().getResource("lemon.png").toString()));
+        }else if(GameManager.theme == GameManager.Themes.HIGH_CONTRAST){
+            text.setOpacity(0);
+            imageView.setDisable(false);
+            imageView.setOpacity(1);
+            if(text.getText().equals("X"))
+                imageView.setImage(new Image(getClass().getResource("human.png").toString()));
+            else if(text.getText().equals("O"))
+                imageView.setImage(new Image(getClass().getResource("ai.png").toString()));
+        }else{
+            text.setOpacity(1);
+            imageView.setDisable(true);
+            imageView.setOpacity(0);
+        }
+    }
+
     public double getCenterX(){
         return getTranslateX() + 100;
     }
