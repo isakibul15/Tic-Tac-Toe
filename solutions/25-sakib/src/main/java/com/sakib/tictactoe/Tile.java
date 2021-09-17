@@ -13,6 +13,7 @@ import javafx.scene.text.Text;
 class Tile extends StackPane {
     public Text text = new Text();
 
+
     ImageView imageView = new ImageView();
     Rectangle border;
     //Created Boxes
@@ -56,6 +57,11 @@ class Tile extends StackPane {
 //                    GameManager.print_status();
                 }
         );
+    }
+
+    public Tile(String text) {
+        this();
+        this.text.setText(text);
     }
 
     public void updateTheme(){

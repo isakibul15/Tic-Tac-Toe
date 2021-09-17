@@ -19,7 +19,7 @@ public class GameManager {
     public static boolean playable = true;
     public static Tile[][] board = new Tile[3][3];
     public static ArrayList<Combo> combos = new ArrayList<>();
-    public static GameBoard gameBoard = new GameBoard();
+    public static GameBoard gameBoard;
     public static boolean is_player_won = false;
     public static boolean lineDrawn = false;
 

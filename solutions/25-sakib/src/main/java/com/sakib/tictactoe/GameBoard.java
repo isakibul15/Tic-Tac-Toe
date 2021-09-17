@@ -15,6 +15,8 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontPosture;
 import javafx.scene.text.FontWeight;
 
+import java.util.Locale;
+
 public class GameBoard extends Pane {
 
 
@@ -84,10 +86,13 @@ public class GameBoard extends Pane {
         box.getChildren().add(getLabel("Theme", Font.font("Aril", FontWeight.EXTRA_BOLD, 30),Color.BLACK));
         RadioButton classic_rb = getRadioButton("Classic", Font.font("Arial", FontPosture.REGULAR, 26),
                 GameManager.theme == GameManager.Themes.CLASSIC);
+        classic_rb.setId("classic_button");
         RadioButton forrest_rb = getRadioButton("Forest", Font.font("Arial", FontPosture.REGULAR, 26),
                 GameManager.theme == GameManager.Themes.FOREST);
+        forrest_rb.setId("forrest_button");
         RadioButton highContrast_rb = getRadioButton("High Contrast", Font.font("Arial", FontPosture.REGULAR, 26),
                 GameManager.theme == GameManager.Themes.HIGH_CONTRAST);
+        highContrast_rb.setId("highContrast_button");
 
         box.getChildren().addAll(classic_rb, forrest_rb, highContrast_rb);
         group_radioButtons(classic_rb, forrest_rb, highContrast_rb);
@@ -101,33 +106,37 @@ public class GameBoard extends Pane {
                         "-fx-text-fill: white;"+
                         "-fx-border-radius: 10;"+
                         "-fx-background-radius: 10;";
-        bottom_btns.getChildren().add(get_button("Start With Random AI", Font.font("Arial", FontPosture.REGULAR, 20), e->{
+        Button randomButton = get_button("Start With Random AI", Font.font("Arial", FontPosture.REGULAR, 20), e -> {
             // Here you can do stuff of Random AI
             GameManager.isDefensiveAI = false;
-        }, style));
-        bottom_btns.getChildren().add(get_button("Start With Defensive AI", Font.font("Arial", FontPosture.REGULAR, 20), e->{
+        }, style);
+        randomButton.setId("random_button");
+        bottom_btns.getChildren().add(randomButton);
+        Button defensiveButton = get_button("Start With Defensive AI", Font.font("Arial", FontPosture.REGULAR, 20), e -> {
             // Here you can do stuff of defensive AI.
             GameManager.isDefensiveAI = true;
-        }, style));
+        }, style);
+        defensiveButton.setId("defensive_button");
+        bottom_btns.getChildren().add(defensiveButton);
 
         bottom_btns.getChildren().add(get_button("Start Game", Font.font("Arial", FontPosture.REGULAR, 20), e->{
-            GameManager.playable = true;
-            for(int i = 0; i< 3; i++){
-                for(int j = 0; j< 3; j++){
-                    board[i][j].text.setText("");
-                    board[i][j].imageView.setImage(null);
+                    GameManager.playable = true;
+                    for(int i = 0; i< 3; i++){
+                        for(int j = 0; j< 3; j++){
+                            board[i][j].text.setText("");
+                            board[i][j].imageView.setImage(null);
+                        }
+                    }
+                    if(GameManager.lineDrawn) {
+                        getChildren().remove(getChildren().size() - 1);
+                        GameManager.lineDrawn = false;
+                    }
+
+                    GameManager.is_player_won = false;
+                    GameManager.lastMove = null;
+
                 }
-            }
-            if(GameManager.lineDrawn) {
-                getChildren().remove(getChildren().size() - 1);
-                GameManager.lineDrawn = false;
-            }
-
-            GameManager.is_player_won = false;
-            GameManager.lastMove = null;
-
-        }
-        ,style));
+                ,style));
         box.getChildren().add(bottom_btns);
         bottom_btns.setPrefHeight(400);
 
