@@ -1,13 +1,13 @@
+com/sakib/tictactoe/Main.java
+ com.sakib.tictactoe.Main
+com/sakib/tictactoe/AI.java
+ com.sakib.tictactoe.AI
 com/sakib/tictactoe/Combo.java
  com.sakib.tictactoe.Combo
 com/sakib/tictactoe/RandomAI.java
  com.sakib.tictactoe.RandomAI
-com/sakib/tictactoe/Main.java
- com.sakib.tictactoe.Main
 com/sakib/tictactoe/ShowCombinationResult.java
  com.sakib.tictactoe.ShowCombinationResult
-com/sakib/tictactoe/AI.java
- com.sakib.tictactoe.AI
 com/sakib/tictactoe/DefensiveAI.java
  com.sakib.tictactoe.DefensiveAI
 com/sakib/tictactoe/ShowAnimationLine.java

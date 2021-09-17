@@ -76,9 +76,9 @@ class Tile extends StackPane {
             imageView.setDisable(false);
             imageView.setOpacity(1);
             if(text.getText().equals("X"))
-                imageView.setImage(new Image(getClass().getResource("human.png").toString()));
+                imageView.setImage(new Image(getClass().getResource("HumanBlack.png").toString()));
             else if(text.getText().equals("O"))
-                imageView.setImage(new Image(getClass().getResource("ai.png").toString()));
+                imageView.setImage(new Image(getClass().getResource("AiWhite.png").toString()));
         }else{
             text.setOpacity(1);
             imageView.setDisable(true);
@@ -116,7 +116,7 @@ class Tile extends StackPane {
                 text.setText("X");
                 imageView.setOpacity(1);
                 imageView.setDisable(false);
-                imageView.setImage(new Image(getClass().getResource("human.png").toString()));
+                imageView.setImage(new Image(getClass().getResource("HumanBlack.png").toString()));
                 break;
         }
     }
@@ -140,7 +140,7 @@ class Tile extends StackPane {
                 text.setText("O");
                 imageView.setOpacity(1);
                 imageView.setDisable(false);
-                imageView.setImage(new Image(getClass().getResource("ai.png").toString()));
+                imageView.setImage(new Image(getClass().getResource("AiWhite.png").toString()));
                 break;
         }
     }
